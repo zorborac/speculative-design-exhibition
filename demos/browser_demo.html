@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>alpha asset demo</title>
+<style>
+  body { margin: 0; background: #111; height: 100vh; overflow: hidden; }
+  video { position: absolute; }
+  .bg { inset: 0; width: 100vw; height: 100vh; object-fit: cover; }
+  .fg { max-width: 45vw; bottom: 0; animation: drift 14s ease-in-out infinite alternate; }
+  .fg:nth-of-type(odd) { left: 8vw; }
+  .fg:nth-of-type(even) { right: 8vw; scale: 0.7; animation-direction: alternate-reverse; }
+  @keyframes drift { from { translate: 0 0; } to { translate: 6vw -4vh; } }
+</style>
+  <video src="../media/assets/4050_What_Makes_Us_Tick_02_01_18_19__00475_00-00483_00.webm" autoplay loop muted playsinline class="bg"></video>
+  <video src="../media/assets/SanFrancisco1955CinemascopeFilm__00998_00-01010_00.webm" autoplay loop muted playsinline class="bg"></video>
+  <video src="../media/assets/TripDown1905__00180_00-00192_00.webm" autoplay loop muted playsinline class="bg"></video>
+  <video src="../media/assets/4050_What_Makes_Us_Tick_02_01_18_19__00175_00-00183_00.webm" autoplay loop muted playsinline class="fg"></video>
+  <video src="../media/assets/CaseofSp1940__00030_00-00038_00.webm" autoplay loop muted playsinline class="fg"></video>
+  <video src="../media/assets/Designfo1956__00360_00-00368_00.webm" autoplay loop muted playsinline class="fg"></video>
+  <video src="../media/assets/DuckandC1951__00115_00-00123_00.webm" autoplay loop muted playsinline class="fg"></video>
+  <video src="../media/assets/OneGotFa1963__00415_00-00423_00.webm" autoplay loop muted playsinline class="fg"></video>

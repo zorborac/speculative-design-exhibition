@@ -1,0 +1,23 @@
+# media lives on the external volume, never in git
+media
+
+# book club text — copyrighted, stays local
+speculative-everything.pdf
+*.mov
+*.mp4
+*.webm
+*.mpg
+*.mpeg
+
+# python
+.venv/
+__pycache__/
+*.egg-info/
+.python-version
+
+# model checkpoints
+*.pth
+*.pt
+
+# macOS
+.DS_Store
