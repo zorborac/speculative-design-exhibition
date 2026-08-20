@@ -23,8 +23,9 @@ def cut_clip(row: dict, force: bool = False) -> dict:
         raise FileNotFoundError(f"no downloaded source for {row['identifier']} — run fetch first")
     src_path, tier = src
     out = config.CLIPS / f"{clip_name(row['identifier'], row['start'], row['end'])}.mov"
+    rel = str(out.relative_to(config.PROJECT_ROOT))  # repo-relative: portable across machines
     if out.exists() and row.get("cut_tier") == tier and not force:
-        row["clip_path"] = str(out)
+        row["clip_path"] = rel
         return row
 
     start, end = parse_ts(row["start"]), parse_ts(row["end"])
@@ -55,5 +56,5 @@ def cut_clip(row: dict, force: bool = False) -> dict:
         check=True,
     )
     row["cut_tier"] = tier
-    row["clip_path"] = str(out)
+    row["clip_path"] = rel
     return row

@@ -129,6 +129,8 @@ def matte_cmd(force):
         clip = row.get("clip_path")
         if not clip:
             continue
+        if not Path(clip).is_absolute():
+            clip = str(config.PROJECT_ROOT / clip)
         wants_alpha = row.get("matte", "").strip().lower() not in ("no", "false", "0")
         out = config.ASSETS / (Path(clip).stem + ".mov")
         if out.exists() and not force:
@@ -148,7 +150,10 @@ def autotag_cmd():
     rows = read_rows(config.CLIPS_CSV)
     for row in rows:
         if row.get("clip_path") and not row.get("suggested_roles"):
-            row["suggested_roles"] = suggest_roles(row["clip_path"])
+            clip = row["clip_path"]
+            if not Path(clip).is_absolute():
+                clip = str(config.PROJECT_ROOT / clip)
+            row["suggested_roles"] = suggest_roles(clip)
             console.print(f"{row['identifier']} [{row['start']}-{row['end']}]: "
                           f"{row['suggested_roles']}")
     write_rows(config.CLIPS_CSV, rows, CLIP_FIELDS)
